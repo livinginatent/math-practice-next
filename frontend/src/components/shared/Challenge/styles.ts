@@ -36,3 +36,8 @@ export const StyledButton = styled.button`
   height: 25px;
   margin-left: 10px;
 `;
+
+export const StyledWrongAnswer = styled.p`
+font-size: large;
+color: red;
+`

@@ -13,3 +13,7 @@ export interface FormInput {
   email: string;
   password: string;
 }
+
+export interface ChallengeComponent {
+  challengeType: string | string[] | undefined;
+}

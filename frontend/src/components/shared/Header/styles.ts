@@ -4,13 +4,12 @@ export const StyledHeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #ccc;
+  background-color: #fffbf5;
+  border-radius: 5px;
 `;
 
 export const StyledHeaderItem = styled.p`
-  margin-left: 1rem;
+  margin: 1rem;
   text-decoration: none;
   color: #333;
   font-weight: bold;

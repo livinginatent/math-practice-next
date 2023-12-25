@@ -1,18 +1,23 @@
 "use client";
 import React from "react";
 import { GridContainer, GridItem } from "./styles";
-import myImage from "../../../addition-vertical-2x2digit-sums-under-100-a.gif";
+import { useRouter } from "next/navigation";
+
 type Props = {};
 
 const ChallengesGrid = (props: Props) => {
+  const router = useRouter();
+  const handleClick = (destination: any) => {
+    router.push(destination);
+  };
   return (
     <GridContainer>
-      <GridItem>Addition Practice </GridItem>
-      <GridItem>Subtraction Practice </GridItem>
-      <GridItem>Multiplication Practice </GridItem>
-      <GridItem>Division Practice </GridItem>
-      <GridItem>PEMDAS Practice </GridItem>
-      <GridItem>Tutorials </GridItem>
+      <GridItem onClick={()=>handleClick('challenges/addition')} >Addition Practice </GridItem>
+      <GridItem onClick={()=>handleClick('challenges/subtraction')}>Subtraction Practice </GridItem>
+      <GridItem onClick={()=>handleClick('challenges/multiplication')}>Multiplication Practice </GridItem>
+      <GridItem onClick={()=>handleClick('challenges/division')}>Division Practice </GridItem>
+      <GridItem onClick={()=>handleClick('challenges/pemdas')}>PEMDAS Practice </GridItem>
+      <GridItem onClick={()=>handleClick('/tutorials')}>Tutorials </GridItem>
     </GridContainer>
   );
 };

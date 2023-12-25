@@ -6,6 +6,8 @@ export const StyledHeaderWrapper = styled.header`
   justify-content: space-between;
   background-color: #fffbf5;
   border-radius: 5px;
+  width: 100%;
+ 
 `;
 
 export const StyledHeaderItem = styled.p`

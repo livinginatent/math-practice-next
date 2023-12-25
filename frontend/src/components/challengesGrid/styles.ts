@@ -5,11 +5,11 @@ export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  height: 100%; /* Adjust height as needed */
   width: 40%; /* Adjust width as needed, or set a specific width */
   margin-top: 30px;
   margin-left: 0.5rem;
   gap: 0.5rem;
+  width: 45%;
 `;
 
 export const GridItem = styled.div`
@@ -18,7 +18,7 @@ export const GridItem = styled.div`
   align-items: center;
   justify-content: center;
   /* Add padding, text styles, or other design elements as needed */
-  height: 14rem;
+  height: 11rem;
  /*  border-top-right-radius: 10px;
   border-bottom-left-radius: 10px; */
   transition: all 1s;

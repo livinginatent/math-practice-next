@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import {
+  StyledDescription,
   StyledGeneralInfo,
   StyledMainWrapper,
   StyledWelcomeText,
@@ -12,7 +13,6 @@ import ChallengesGrid from "../challengesGrid/ChallengesGrid";
 type Props = {};
 
 const Welcome = (props: Props) => {
-  
   return (
     <>
       <StyledMainWrapper>

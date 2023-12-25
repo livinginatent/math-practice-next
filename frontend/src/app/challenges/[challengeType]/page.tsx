@@ -1,15 +1,17 @@
-'use client'
-import Challenge from '@/components/shared/Challenge/challenge'
-import React from 'react'
-import { useRouter } from 'next/navigation';
-type Props = {}
+"use client";
+import React from "react";
+import { StyledMainChallengeWrapper } from "./styles";
+import Challenge from "@/components/shared/Challenge/Challenge";
+type Props = {};
 
-const ChallengePage = ({params}:any) => {
- const challengeType = params.challengeType
- console.log(challengeType)
+const ChallengePage = ({ params }: any) => {
+  const challengeType = params.challengeType;
+  console.log(challengeType);
   return (
-    <Challenge challengeType={challengeType}/>
-  )
-}
+    <StyledMainChallengeWrapper>
+      <Challenge challengeType={challengeType} />
+    </StyledMainChallengeWrapper>
+  );
+};
 
-export default ChallengePage
+export default ChallengePage;

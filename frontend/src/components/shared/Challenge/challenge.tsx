@@ -4,7 +4,6 @@ import {
   StyledAnswer,
   StyledButton,
   StyledChallenge,
-  StyledChallengesWrapper,
   StyledWrongAnswer,
 } from "./styles";
 import { useChallenges } from "@/hooks/useChallenges";
@@ -56,14 +55,14 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
   };
 
   return (
-    <StyledChallengesWrapper>
+    
       <StyledChallenge>
         {challenge ? challenge : ""}
         <StyledAnswer value={userInput} onChange={handleInputChange} />
         <StyledButton onClick={handleSubmit}>Answer</StyledButton>
         {isWrong ? <StyledWrongAnswer>Try Again</StyledWrongAnswer> : null}
       </StyledChallenge>
-    </StyledChallengesWrapper>
+    
   );
 };
 

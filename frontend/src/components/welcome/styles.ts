@@ -24,6 +24,9 @@ export const StyledGeneralInfo = styled.div`
   height: 100%; 
 `;
 
+export const StyledDescription = styled.p`
+`
+
 export const StyledWelcomeText = styled.button`
   font-size: 24px;
   cursor: pointer;

@@ -7,17 +7,27 @@ type Props = {};
 
 const ChallengesGrid = (props: Props) => {
   const router = useRouter();
+  const URL = "challenges/";
+  const items = [
+    "addition",
+    "subtraction",
+    "multiplication",
+    "division",
+    "pemdas",
+    "tutorials",
+  ];
   const handleClick = (destination: any) => {
     router.push(destination);
   };
   return (
     <GridContainer>
-      <GridItem onClick={()=>handleClick('challenges/addition')} >Addition Practice </GridItem>
-      <GridItem onClick={()=>handleClick('challenges/subtraction')}>Subtraction Practice </GridItem>
-      <GridItem onClick={()=>handleClick('challenges/multiplication')}>Multiplication Practice </GridItem>
-      <GridItem onClick={()=>handleClick('challenges/division')}>Division Practice </GridItem>
-      <GridItem onClick={()=>handleClick('challenges/pemdas')}>PEMDAS Practice </GridItem>
-      <GridItem onClick={()=>handleClick('/tutorials')}>Tutorials </GridItem>
+      {items.map((item) => {
+        return (
+          <GridItem key={item} onClick={() => handleClick(`${URL}${item}`)}>
+            {item.charAt(0).toLocaleUpperCase() + item.slice(1)}
+          </GridItem>
+        );
+      })}
     </GridContainer>
   );
 };

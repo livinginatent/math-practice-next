@@ -1,24 +1,12 @@
 import styled from "styled-components";
 
-export const StyledChallengesWrapper = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%; 
-  width: 100%; 
-  
-`;
+
 
 export const StyledChallenge = styled.div`
   border: 2px solid black;
   border-radius: 10px;
-  text-align:center;
+  text-align: center;
   position: absolute;
-  top: 40%;
-  transform: translateY(-50%);
-  width: 30%;
-  height: 20%;
-  
 `;
 
 export const StyledAnswer = styled.input`
@@ -38,6 +26,6 @@ export const StyledButton = styled.button`
 `;
 
 export const StyledWrongAnswer = styled.p`
-font-size: large;
-color: red;
-`
+  font-size: large;
+  color: red;
+`;

@@ -17,6 +17,7 @@ export const GridItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   /* Add padding, text styles, or other design elements as needed */
   height: 11rem;
  /*  border-top-right-radius: 10px;

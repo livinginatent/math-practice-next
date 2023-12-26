@@ -29,6 +29,7 @@ export const StyledDescription = styled.p`
 
 export const StyledWelcomeText = styled.button`
   font-size: 24px;
+  color: #1b1c1e;
   cursor: pointer;
   background-color: #d8d9da;
   border: 1px solid transparent;

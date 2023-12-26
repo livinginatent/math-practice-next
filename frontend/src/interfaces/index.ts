@@ -17,3 +17,8 @@ export interface FormInput {
 export interface ChallengeComponent {
   challengeType: string | string[] | undefined;
 }
+
+export interface GameOverComponent {
+  lostBy:string
+  newGame:any
+}

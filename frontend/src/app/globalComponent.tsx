@@ -13,8 +13,7 @@ const GlobalComponent = ({ children }: any) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (true) {
-        console.log('first')
+    if (!path.includes("/challenges")) {
       dispatch(resetGame());
     }
   }, [path, dispatch]);

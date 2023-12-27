@@ -13,8 +13,7 @@ const ChallengesGrid = (props: Props) => {
     "subtraction",
     "multiplication",
     "division",
-    "pemdas",
-    "tutorials",
+    "modulus",
   ];
   const handleClick = (destination: any) => {
     router.push(destination);
@@ -28,6 +27,7 @@ const ChallengesGrid = (props: Props) => {
           </GridItem>
         );
       })}
+      <GridItem onClick={() => handleClick(`${URL}order-of-operations`)}>Order Of Operations</GridItem>
     </GridContainer>
   );
 };

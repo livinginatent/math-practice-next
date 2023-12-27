@@ -47,10 +47,10 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
   const [lostBy, setLostBy] = useState("");
 
   const dispatch = useAppDispatch();
-  
+
   useEffect(() => {
     generateNewChallenge();
-  }, []);
+  },[]);
 
   useEffect(() => {
     let intervalId: any;
@@ -66,7 +66,7 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
       setLostBy("lives");
     }
     return () => clearInterval(intervalId);
-  }, [timeRemaining, user.lives]);
+  }, [timeRemaining, user.lives,dispatch]);
 
   if (streak === 5) {
     dispatch(increaseLives(1));
@@ -82,8 +82,7 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
       newChallenge = randomMultiplication();
     } else if (challengeType === "division") {
       newChallenge = randomDivision();
-    } else {
-      router.push("/challenges");
+    } else if (challengeType === "order-of-operations") {
     }
     if (newChallenge) {
       setChallenge(newChallenge.challenge);

@@ -6,7 +6,7 @@ export const useChallenges = () => {
     const secondNum = Math.floor(Math.random() * 10);
     const challenge = `${firstNum} + ${secondNum} =`;
     const result = firstNum + secondNum;
-    return { firstNum, secondNum, challenge, result };
+    return { challenge, result };
   };
 
   const randomSubtraction = () => {
@@ -14,14 +14,14 @@ export const useChallenges = () => {
     const secondNum = Math.floor(Math.random() * 10);
     const challenge = `${firstNum} - ${secondNum} =`;
     const result = firstNum - secondNum;
-    return { firstNum, secondNum, challenge, result };
+    return { challenge, result };
   };
   const randomMultiplication = () => {
     const firstNum = Math.floor(Math.random() * 10);
     const secondNum = Math.floor(Math.random() * 10);
     const challenge = `${firstNum} * ${secondNum} =`;
     const result = firstNum * secondNum;
-    return { firstNum, secondNum, challenge, result };
+    return { challenge, result };
   };
   const randomDivision = () => {
     let firstNum;
@@ -41,13 +41,19 @@ export const useChallenges = () => {
     const challenge = `${firstNum} / ${secondNum} =`;
     const result = firstNum / secondNum;
 
-    return { firstNum, secondNum, challenge, result };
+    return { challenge, result };
   };
+
+
+const operations = ['+', '-', '*', '/'];
+
+
 
   return {
     randomAddition,
     randomSubtraction,
     randomMultiplication,
     randomDivision,
+    
   };
 };

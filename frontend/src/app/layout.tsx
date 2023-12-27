@@ -1,25 +1,21 @@
-"use client";
-import Header from "@/components/shared/Header/Header";
 import "../styles/globalStyles.css";
-import StyledComponentsRegistry from "./registry";
 import { rubik } from "../app/fonts/fonts";
+import GlobalComponent from "./globalComponent";
+import React from "react";
 import { Providers } from "./lib/provider";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <html>
-        <Providers>
-          <body className={`${rubik.className}`}>
-            <Header />
-            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-          </body>
-        </Providers>
+        <body className={`${rubik.className}`}>
+          <Providers>
+            <GlobalComponent>{children}</GlobalComponent>{" "}
+          </Providers>
+        </body>
       </html>
     </>
   );
 }
+
+export default RootLayout;

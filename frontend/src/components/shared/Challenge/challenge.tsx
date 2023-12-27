@@ -13,7 +13,7 @@ import {
 } from "./styles";
 import { useChallenges } from "@/hooks/useChallenges";
 import { ChallengeComponent } from "@/interfaces";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/hooks/rtkHooks";
 import {
   decreaseLives,
@@ -47,7 +47,7 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
   const [lostBy, setLostBy] = useState("");
 
   const dispatch = useAppDispatch();
-
+  
   useEffect(() => {
     generateNewChallenge();
   }, []);
@@ -101,7 +101,7 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
     if (userInput.length === 0) {
       setIsEmpty(true);
     } else {
-      setIsEmpty(false)
+      setIsEmpty(false);
       if (parseInt(userInput, 10) === result) {
         setTimeRemaining((prevTime) => (prevTime += 5));
         setStreak((prevStreak) => (prevStreak += 1));
@@ -133,8 +133,12 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
         <StyledChallengeWrapper>
           <StyledUserGameStats>
             <StyledUserScore>Score: {user.score} </StyledUserScore>
-            <StyledUserTime><ClockIcon/> {timeRemaining} </StyledUserTime>
-            <StyledUserLives><HeartIcon/> {user.lives} </StyledUserLives>
+            <StyledUserTime>
+              <ClockIcon /> {timeRemaining}{" "}
+            </StyledUserTime>
+            <StyledUserLives>
+              <HeartIcon /> {user.lives}{" "}
+            </StyledUserLives>
           </StyledUserGameStats>
           <StyledChallenge>
             {challenge ? challenge : ""}

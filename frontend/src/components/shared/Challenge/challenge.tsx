@@ -31,6 +31,7 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
     randomSubtraction,
     randomMultiplication,
     randomDivision,
+    randomOrderOfOperations
   } = useChallenges();
 
   const [challenge, setChallenge] = useState("");
@@ -83,6 +84,7 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
     } else if (challengeType === "division") {
       newChallenge = randomDivision();
     } else if (challengeType === "order-of-operations") {
+      newChallenge = randomOrderOfOperations();
     }
     if (newChallenge) {
       setChallenge(newChallenge.challenge);

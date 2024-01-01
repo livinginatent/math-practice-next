@@ -37,14 +37,14 @@ export const GridItem = styled.div`
   &:after {
     top: -1px;
     left: -1px;
-    border-top: 5px solid #3887be;
-    border-left: 5px solid #3887be;
+    border-top: 5px solid #ffffff;
+    border-left: 5px solid #ffffff;
   }
   &:before {
     bottom: -1px;
     right: -1px;
-    border-bottom: 5px solid #3887BE;
-    border-right: 5px solid #3887BE;
+    border-bottom: 5px solid #ffffff;
+    border-right: 5px solid #ffffff;
   }
   &:hover {
     border-top-right-radius: 0px;

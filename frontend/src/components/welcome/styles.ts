@@ -28,16 +28,14 @@ export const StyledDescription = styled.p`
 `
 
 export const StyledWelcomeText = styled.button`
+  background-color: transparent;
+  border: none;
   font-size: 24px;
-  color: #1b1c1e;
+  color: #3c22dd;
   cursor: pointer;
-  background-color: #d8d9da;
-  border: 1px solid transparent;
-  border-radius: 5px;
   &:hover {
-    transition: 0.3s ease-in-out;
-    border: 1px solid #3887be;
-    background-color: #e4f1ff;
+    border-bottom: 2px solid #3c22dd;
+    margin-top: -2px;
   }
 `;
 

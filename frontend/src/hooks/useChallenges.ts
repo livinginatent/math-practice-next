@@ -70,19 +70,26 @@ export const useChallenges = () => {
     let result: number;
     const operands = ["+", "-", "*", "/"];
 
-    const useBrackets = /* Math.random() > 0.5 */ true;
+    const useBrackets = Math.random() > 0.5;
 
     if (useBrackets) {
-      const leftBracket = /* Math.random() > 0.5 */ true;
+      const leftBracket = Math.random() > 0.5;
       if (leftBracket) {
-        firstOp =
-          /* operands[Math.floor(Math.random() * operands.length)] */ "*";
-        secondOp =
-          /* operands[Math.floor(Math.random() * operands.length)] */ "/";
+        firstOp = operands[Math.floor(Math.random() * operands.length)];
+        secondOp = operands[Math.floor(Math.random() * operands.length)];
+        if (firstOp === "/" && secondOp === "/") {
+          const nonDivisionOperands = operands.filter((op) => op !== "/");
+          secondOp =
+            nonDivisionOperands[
+              Math.floor(Math.random() * nonDivisionOperands.length)
+            ];
+        }
+        console.log(firstOp, secondOp);
         if (firstOp === "*" && secondOp === "/") {
-          firstNum = Math.floor(Math.random() * 10 + 1);
-          secondNum = Math.floor(Math.random() * 10 + 1);
-          divisors = findDivisors(firstNum / secondNum);
+          firstNum = Math.floor(Math.random() * 15 + 1);
+          secondNum = Math.floor(Math.random() * 15 + 1);
+          divisors = findDivisors(firstNum * secondNum);
+          console.log(divisors);
           thirdNum = divisors[Math.floor(Math.random() * divisors.length)];
           challenge = `(${firstNum}${firstOp}${secondNum})${secondOp}${thirdNum}`;
           result = eval(challenge);
@@ -94,19 +101,28 @@ export const useChallenges = () => {
           thirdNum = divisors[Math.floor(Math.random() * divisors.length)];
           challenge = `(${firstNum}${firstOp}${secondNum})${secondOp}${thirdNum}`;
           result = eval(challenge);
+          return { challenge, result };
         } else if (firstOp === "-" && secondOp === "/") {
-          firstNum = Math.floor(Math.random() * 10 + 1);
-          secondNum = Math.floor(Math.random() * 10 + 1);
+          secondNum = Math.floor(Math.random() * 15 + 1);
+          firstNum = Math.floor(Math.random() * 15 + 1) + secondNum;
           divisors = findDivisors(firstNum - secondNum);
           thirdNum = divisors[Math.floor(Math.random() * divisors.length)];
           challenge = `(${firstNum}${firstOp}${secondNum})${secondOp}${thirdNum}`;
           result = eval(challenge);
+          return { challenge, result };
         } else if (firstOp === "/") {
           [firstNum, secondNum] = generateDivisibleNumbers();
           thirdNum = Math.floor(Math.random() * 10 + 1);
           challenge = `(${firstNum}${firstOp}${secondNum})${secondOp}${thirdNum}`;
           result = eval(challenge);
+          return { challenge, result };
         } else {
+          firstNum = Math.floor(Math.random() * 10 + 1);
+          secondNum = Math.floor(Math.random() * 10 + 1);
+          thirdNum = Math.floor(Math.random() * 10 + 1);
+          challenge = `(${firstNum}${firstOp}${secondNum})${secondOp}${thirdNum}`;
+          result = eval(challenge);
+          return { challenge, result };
         }
       }
     } else {

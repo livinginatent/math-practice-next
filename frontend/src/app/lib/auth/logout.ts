@@ -1,13 +1,12 @@
-import { useRouter } from "next/navigation";
 
 
 export const logout = async (router:any) => {
     
   try {
     await fetch("/api/logout",{
-        method:'POST'
+      method:'GET'
     });
-    router.push("/login");
+    
   } catch (error: any) {
     console.log(error.message);
   }

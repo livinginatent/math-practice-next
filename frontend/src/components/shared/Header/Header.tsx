@@ -10,11 +10,12 @@ const Header = (props: Props) => {
   
   const router = useRouter();
   const handleClick = () => {
-    router.push("/");
+    
   };
 
-const handleLogOut = () => {
-  logout(router)
+const handleLogOut = async () => {
+  await logout(router)
+  router.push("/login");
 }
 
  

@@ -20,7 +20,7 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm<RegisterData>();
 
-  const submitRegister = async ({
+  const onSubmit = async ({
     username,
     email,
     password,
@@ -49,7 +49,7 @@ const RegisterPage = () => {
   return (
     <RegisterContainer>
       <RegisterTitle>Register</RegisterTitle>
-      <RegisterForm onSubmit={handleSubmit(submitRegister)}>
+      <RegisterForm onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="username">Username</label>
         <RegisterInput
           type="text"

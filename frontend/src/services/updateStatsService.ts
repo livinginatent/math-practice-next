@@ -14,9 +14,7 @@ export const updateStats = async (token:any,operation:any,finalScore:any) => {
 
     const res = await axios.patch(`${API_URL}/updateuserstats`, body, config);
 
-    console.log("hello");
-
-    console.log(res);
+    
   } catch (error) {
     console.log(error);
   }

@@ -6,7 +6,6 @@ type Props = {};
 
 const ChallengePage = ({ params }: any) => {
   const challengeType = params.challengeType;
-  console.log(challengeType);
   return (
     <StyledMainChallengeWrapper>
       <Challenge challengeType={challengeType} />

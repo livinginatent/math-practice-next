@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { resetGame } from "./lib/features/user/userSlice";
-import { Providers } from "./lib/provider";
 import StyledComponentsRegistry from "./registry";
 import Header from "@/components/shared/Header/Header";
 import { useAppDispatch } from "@/hooks/rtkHooks";

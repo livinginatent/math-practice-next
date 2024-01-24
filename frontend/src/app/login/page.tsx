@@ -1,8 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../hooks/useAuth";
-import { RegisterData } from "@/interfaces";
+import { LoginData, RegisterData } from "@/interfaces";
 import {
   LoginButton,
   LoginContainer,
@@ -12,30 +11,42 @@ import {
 } from "./styles";
 import { useRouter } from "next/navigation";
 
+
 type Props = {};
 
 const LoginPage = (props: Props) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<RegisterData>();
-  const { loginUser, user } = useAuth();
-  const router = useRouter();
 
-  useEffect(() => {
-    if (user) router.push("/");
-  }, [user]);
-  const onSubmit = (data: RegisterData) => {
-    loginUser(data); // This should call the API to register the user
+  const router = useRouter()
+
+  const onSubmit = async ({ email, password }: LoginData) => {
+    try {
+      const res = await fetch("api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      if (res.ok) {
+        reset();
+        router.push('/')
+      }
+    } catch (error) {}
   };
 
   return (
     <LoginContainer>
       <LoginTitle>Login</LoginTitle>
       <LoginForm onSubmit={handleSubmit(onSubmit)}>
-        
-
         <label htmlFor="email">Email address</label>
         <LoginInput
           type="email"

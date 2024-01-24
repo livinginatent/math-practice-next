@@ -84,12 +84,12 @@ export const useChallenges = () => {
               Math.floor(Math.random() * nonDivisionOperands.length)
             ];
         }
-        console.log(firstOp, secondOp);
+        
         if (firstOp === "*" && secondOp === "/") {
           firstNum = Math.floor(Math.random() * 15 + 1);
           secondNum = Math.floor(Math.random() * 15 + 1);
           divisors = findDivisors(firstNum * secondNum);
-          console.log(divisors);
+       
           thirdNum = divisors[Math.floor(Math.random() * divisors.length)];
           challenge = `(${firstNum}${firstOp}${secondNum})${secondOp}${thirdNum}`;
           result = eval(challenge);

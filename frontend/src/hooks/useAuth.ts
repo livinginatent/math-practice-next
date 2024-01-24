@@ -1,10 +1,17 @@
 'use client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as authService from "../services/authService";
 import { LoginData, RegisterData } from "@/interfaces";
 
 export const useAuth = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
+
+    useEffect(() => {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    }, []);
 
   const registerUser = async (userData:RegisterData) => {
     try {
@@ -18,12 +25,14 @@ export const useAuth = () => {
   const loginUser = async (userData:LoginData) => {
     try {
       const response = await authService.login(userData);
-      // Handle response, set user
-      setUser(response.data)
+     localStorage.setItem("user", JSON.stringify(response.data));
+     setUser(response.data);
     } catch (error) {
       // Handle error
     }
   };
+
+ 
 
   return { user, registerUser, loginUser };
 };

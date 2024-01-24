@@ -43,6 +43,7 @@ export const StyledButton = styled.button`
   color: white;
   background-color: #3c22dd;
   font-size: 16px;
+  cursor: pointer;
 
 `;
 

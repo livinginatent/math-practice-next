@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { RegisterData } from "@/interfaces";
@@ -12,11 +12,8 @@ import {
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
-
-const RegisterPage =  () => {
-
-  
-  const router = useRouter()
+const RegisterPage = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -24,12 +21,7 @@ const RegisterPage =  () => {
     formState: { errors },
   } = useForm<RegisterData>();
 
-  const onSubmit = async ({
-    username,
-    email,
-    password,
-  }: RegisterData) => {
-    
+  const onSubmit = async ({ username, email, password }: RegisterData) => {
     try {
       const res = await fetch("api/register", {
         method: "POST",
@@ -40,20 +32,17 @@ const RegisterPage =  () => {
           username,
           email,
           password,
-          
         }),
       });
-       if (res.ok) {
-         // Assuming your API returns the username and password upon successful registration
-         const userData = await res.json();
-         signIn("credentials", {
-           username: userData.username,
-           password: userData.password,
-           
-         });
-         reset();
-         router.push("/");
-       }
+      if (res.ok) {
+        await signIn("credentials", {
+          email,
+          password,
+          redirect: false,
+        });
+        router.push("/");
+      }
+
     } catch (error) {}
   };
 

@@ -10,7 +10,7 @@ const Header = () => {
   };
   const { data: session } = useSession();
   const user = session?.user;
-  console.log(session?.user);
+  
   return (
     <StyledHeaderWrapper>
       <StyledHeaderItem>Welcome {user?.email}</StyledHeaderItem>

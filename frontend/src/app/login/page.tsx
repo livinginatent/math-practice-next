@@ -75,7 +75,10 @@ const LoginPage = (props: Props) => {
 
         <LoginButton type="submit">Login</LoginButton>
         <StyledRegister
-          onClick={() => router.push("/register")}
+          onClick={(e) => {
+            e.preventDefault();
+            router.push("/register");
+          }}
         >{`Don't have an account?`}</StyledRegister>
       </LoginForm>
     </LoginContainer>

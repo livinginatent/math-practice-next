@@ -1,30 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyledHeaderItem, StyledHeaderWrapper } from "./styles";
 import { useRouter } from "next/navigation";
-import {  logout } from "@/app/lib/auth/logout";
-
-type Props = {};
-
-const Header = (props: Props) => {
- 
-  
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+const Header = () => {
   const router = useRouter();
-  const handleClick = () => {
-    
+  const handleLogOut = () => {
+    signOut({ callbackUrl: "http://localhost:3000/login" });
   };
-
-const handleLogOut = async () => {
-  await logout(router)
-  router.push("/login");
-}
-
- 
+  const { data: session } = useSession();
+  const user = session?.user;
+  console.log(session?.user);
   return (
     <StyledHeaderWrapper>
-      <StyledHeaderItem>Welcome</StyledHeaderItem>
-      <StyledHeaderItem onClick={handleClick}>Math Practice</StyledHeaderItem>
+      <StyledHeaderItem>Welcome {user?.email}</StyledHeaderItem>
+      <StyledHeaderItem>Math Practice</StyledHeaderItem>
       <StyledHeaderItem>New Challenge</StyledHeaderItem>
-      <StyledHeaderItem onClick={handleLogOut}>Logout</StyledHeaderItem>
+      {session && (
+        <StyledHeaderItem onClick={handleLogOut}>Logout</StyledHeaderItem>
+      )}{" "}
     </StyledHeaderWrapper>
   );
 };

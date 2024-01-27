@@ -23,7 +23,6 @@ import {
 import GameOver from "@/components/gameOver/GameOver";
 import { ClockIcon, HeartIcon } from "./icons";
 import { updateStats } from "@/services/updateStatsService";
-import { useAuth } from "@/hooks/useAuth";
 
 const Challenge = ({ challengeType }: ChallengeComponent) => {
   
@@ -36,9 +35,7 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
     randomOrderOfOperations
   } = useChallenges();
 
-  const {user} = useAuth()
 
-  const token = user?.token
 
 
 
@@ -64,11 +61,7 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
     generateNewChallenge();
   },[]);
 
-  const updateData: UpdateData = {
-    token:token,
-    operation: challengeType,
-    finalScore: score,
-  };
+
 
   useEffect( () => {
     let intervalId: any;
@@ -77,11 +70,9 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
         setTimeRemaining((prevTime) => prevTime - 1);
       }, 1000);
     } else if (timeRemaining === 0) {
-      updateStats(token,operation,score);
       dispatch(gameOver());
       setLostBy("time");
     } else if (player.lives === 0) {
-      updateStats(token,operation,score);
       dispatch(gameOver());
       setLostBy("lives");
     }

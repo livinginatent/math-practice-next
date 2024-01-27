@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import React from "react";
 import { useForm } from "react-hook-form";
 import { RegisterData } from "@/interfaces";
@@ -10,8 +10,12 @@ import {
   RegisterTitle,
 } from "./styles";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
-const RegisterPage = () => {
+
+const RegisterPage =  () => {
+
+  
   const router = useRouter()
   const {
     register,
@@ -39,10 +43,17 @@ const RegisterPage = () => {
           
         }),
       });
-      if (res.ok) {
-        reset()
-        router.push('/')
-      }
+       if (res.ok) {
+         // Assuming your API returns the username and password upon successful registration
+         const userData = await res.json();
+         signIn("credentials", {
+           username: userData.username,
+           password: userData.password,
+           
+         });
+         reset();
+         router.push("/");
+       }
     } catch (error) {}
   };
 

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { LoginData, RegisterData } from "@/interfaces";
 import {
@@ -8,13 +8,23 @@ import {
   LoginForm,
   LoginInput,
   LoginTitle,
+  StyledErrorMessage,
+  StyledRegister,
 } from "./styles";
 import { useRouter } from "next/navigation";
-
+import { signIn, useSession } from "next-auth/react";
 
 type Props = {};
 
 const LoginPage = (props: Props) => {
+  const router = useRouter();
+  const { data: session, status } = useSession();
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/");
+    }
+  }, [session, status, router]);
+
   const {
     register,
     handleSubmit,
@@ -22,24 +32,18 @@ const LoginPage = (props: Props) => {
     formState: { errors },
   } = useForm<RegisterData>();
 
-  const router = useRouter()
-
   const onSubmit = async ({ email, password }: LoginData) => {
     try {
-      const res = await fetch("api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
       });
-      if (res.ok) {
-        reset();
-        router.push('/')
+      if (res?.error) {
+        console.log(res.error);
+        return;
       }
+      router.push("/");
     } catch (error) {}
   };
 
@@ -52,20 +56,27 @@ const LoginPage = (props: Props) => {
           type="email"
           id="email"
           placeholder="Enter email"
-          {...register("email", { required: true })}
+          {...register("email", { required: "Email is required" })}
         />
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && (
+          <StyledErrorMessage>{errors.email.message}</StyledErrorMessage>
+        )}
 
         <label htmlFor="password">Password</label>
         <LoginInput
           type="password"
           id="password"
           placeholder="Enter password"
-          {...register("password", { required: true })}
+          {...register("password", { required: "Password is required" })}
         />
-        {errors.password && <p>{errors.password.message}</p>}
+        {errors.password && (
+          <StyledErrorMessage>{errors.password.message}</StyledErrorMessage>
+        )}
 
         <LoginButton type="submit">Login</LoginButton>
+        <StyledRegister
+          onClick={() => router.push("/register")}
+        >{`Don't have an account?`}</StyledRegister>
       </LoginForm>
     </LoginContainer>
   );

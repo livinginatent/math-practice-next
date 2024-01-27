@@ -6,6 +6,7 @@ import { resetGame } from "./lib/features/user/userSlice";
 import StyledComponentsRegistry from "./registry";
 import Header from "@/components/shared/Header/Header";
 import { useAppDispatch } from "@/hooks/rtkHooks";
+import { AuthProvider } from "./AuthProvider";
 
 const GlobalComponent = ({ children }: any) => {
   const path = usePathname();
@@ -18,10 +19,12 @@ const GlobalComponent = ({ children }: any) => {
   }, [path, dispatch]);
 
   return (
-    <StyledComponentsRegistry>
-      <Header />
-      {children}
-    </StyledComponentsRegistry>
+    <AuthProvider>
+      <StyledComponentsRegistry>
+        <Header />
+        {children}
+      </StyledComponentsRegistry>
+    </AuthProvider>
   );
 };
 

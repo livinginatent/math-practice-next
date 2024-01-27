@@ -17,11 +17,11 @@ export const LoginTitle = styled.h2`
 export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
+  gap: 10px;
 `;
 
 export const LoginInput = styled.input`
   padding: 10px;
-  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
@@ -54,4 +54,17 @@ export const ForgotPasswordLink = styled.a`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const StyledRegister = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding-top: 5px;
+`;
+
+export const StyledErrorMessage = styled.p`
+  color: red;
+  font-size: small;
+  margin: 0;
 `;

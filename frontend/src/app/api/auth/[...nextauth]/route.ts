@@ -18,11 +18,11 @@ export const authOptions: any = {
           const user = await User.findOne({ email });
 
           if (!user) {
-            return null;
+            return null
           }
           const passwordsMatch = await bcrypt.compare(password, user.password);
           if (!passwordsMatch) {
-            return null;
+            return null
           }
 
           return user;

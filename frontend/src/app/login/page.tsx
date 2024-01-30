@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { LoginData, RegisterData } from "@/interfaces";
 import {
@@ -19,6 +19,7 @@ type Props = {};
 const LoginPage = (props: Props) => {
   const router = useRouter();
   const { data: session, status } = useSession();
+  const [error,setError] = useState('')
   useEffect(() => {
     if (status === "authenticated") {
       router.push("/");
@@ -33,16 +34,17 @@ const LoginPage = (props: Props) => {
   } = useForm<RegisterData>();
 
   const onSubmit = async ({ email, password }: LoginData) => {
+    setError('')
     try {
       const res = await signIn("credentials", {
         email,
         password,
         redirect: false,
       });
-      if (res?.error) {
-        console.log(res.error);
-        return;
-      }
+    if (res?.error) {
+      setError('Username or password is incorrect'); // Set the actual error message received from signIn
+      return;
+    }
       router.push("/");
     } catch (error) {}
   };
@@ -61,7 +63,6 @@ const LoginPage = (props: Props) => {
         {errors.email && (
           <StyledErrorMessage>{errors.email.message}</StyledErrorMessage>
         )}
-
         <label htmlFor="password">Password</label>
         <LoginInput
           type="password"
@@ -72,8 +73,8 @@ const LoginPage = (props: Props) => {
         {errors.password && (
           <StyledErrorMessage>{errors.password.message}</StyledErrorMessage>
         )}
-
         <LoginButton type="submit">Login</LoginButton>
+        {error && <StyledErrorMessage>{error}</StyledErrorMessage>} 
         <StyledRegister
           onClick={(e) => {
             e.preventDefault();

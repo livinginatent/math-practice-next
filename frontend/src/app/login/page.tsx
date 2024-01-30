@@ -31,9 +31,12 @@ const LoginPage = (props: Props) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<RegisterData>();
+  } = useForm<RegisterData>({mode:'onSubmit'});
+
+ 
 
   const onSubmit = async ({ email, password }: LoginData) => {
+    
     setError('')
     try {
       const res = await signIn("credentials", {

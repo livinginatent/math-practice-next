@@ -8,6 +8,7 @@ import Header from "@/components/shared/Header/Header";
 import { useAppDispatch } from "@/hooks/rtkHooks";
 import { AuthProvider } from "./AuthProvider";
 
+
 const GlobalComponent = ({ children }: any) => {
   const path = usePathname();
   const dispatch = useAppDispatch();

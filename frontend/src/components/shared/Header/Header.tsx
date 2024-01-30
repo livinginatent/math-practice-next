@@ -3,6 +3,7 @@ import { StyledHeaderItem, StyledHeaderWrapper } from "./styles";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import DropDown from "../Dropdown/Dropdown";
 const Header = () => {
   const router = useRouter()
   const handleLogOut = () => {
@@ -10,12 +11,17 @@ const Header = () => {
   };
   const { data: session } = useSession();
   const user = session?.user;
+  const username = user?.username
 
   return (
     <StyledHeaderWrapper>
-      {user ? (<StyledHeaderItem>Welcome {user?.username}</StyledHeaderItem>) : (<StyledHeaderItem onClick={()=>router.push('/login')}>Sign In</StyledHeaderItem>)}{" "}
-      <StyledHeaderItem>Math Practice</StyledHeaderItem>
-      <StyledHeaderItem>New Challenge</StyledHeaderItem>
+      {user ? (
+        <DropDown userName={username} />
+      ) : (
+        <StyledHeaderItem onClick={() => router.push("/login")}>
+          Sign In
+        </StyledHeaderItem>
+      )}{" "}
       {session && (
         <StyledHeaderItem onClick={handleLogOut}>Logout</StyledHeaderItem>
       )}{" "}

@@ -22,22 +22,16 @@ import {
 } from "@/app/lib/features/user/userSlice";
 import GameOver from "@/components/gameOver/GameOver";
 import { ClockIcon, HeartIcon } from "./icons";
-import { updateStats } from "@/services/updateStatsService";
+import updateStats from "@/app/lib/updateStats";
 
 const Challenge = ({ challengeType }: ChallengeComponent) => {
-  
-
   const {
     randomAddition,
     randomSubtraction,
     randomMultiplication,
     randomDivision,
-    randomOrderOfOperations
+    randomOrderOfOperations,
   } = useChallenges();
-
-
-
-
 
   const [challenge, setChallenge] = useState("");
   const [result, setResult] = useState(0);
@@ -51,19 +45,18 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
   const [isEmpty, setIsEmpty] = useState(false);
   const [streak, setStreak] = useState(0);
   const [lostBy, setLostBy] = useState("");
-  const [score,setScore] = useState(0)
+  const [score, setScore] = useState(0);
 
-  const finalScore = score
-  const operation = challengeType
+  const finalScore = score;
+  const operation = challengeType;
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     generateNewChallenge();
-  },[]);
+  }, []);
 
-
-
-  useEffect( () => {
+  
+  useEffect(() => {
     let intervalId: any;
     if (timeRemaining > 0 && player.lives > 0) {
       intervalId = setTimeout(() => {
@@ -73,11 +66,12 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
       dispatch(gameOver());
       setLostBy("time");
     } else if (player.lives === 0) {
+      updateStats();
       dispatch(gameOver());
       setLostBy("lives");
     }
     return () => clearInterval(intervalId);
-  }, [timeRemaining, player.lives,dispatch]);
+  }, [timeRemaining, player.lives, dispatch]);
 
   if (streak === 5) {
     dispatch(increaseLives(1));
@@ -114,7 +108,7 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
     } else {
       setIsEmpty(false);
       if (parseInt(userInput, 10) === result) {
-        setScore((prev)=>prev+10)
+        setScore((prev) => prev + 10);
         setTimeRemaining((prevTime) => (prevTime += 5));
         setStreak((prevStreak) => (prevStreak += 1));
         generateNewChallenge();
@@ -133,7 +127,7 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
     setIsWrong(false);
     setLostBy("");
     generateNewChallenge();
-    setScore(0)
+    setScore(0);
   };
 
   return (

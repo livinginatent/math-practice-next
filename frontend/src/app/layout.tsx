@@ -1,4 +1,5 @@
 
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "../styles/globalStyles.css";
 import { rubik } from "../app/fonts/fonts";
 import GlobalComponent from "./globalComponent";

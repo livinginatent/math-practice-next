@@ -2,8 +2,9 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 function DropDown({userName}: any) {
   return (
-    <Dropdown style={{marginLeft:'20px'}}>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">Welcome {userName}
+    <Dropdown style={{ marginLeft: "20px" }}>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Welcome {userName}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

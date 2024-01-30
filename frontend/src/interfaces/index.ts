@@ -35,7 +35,7 @@ export interface FormInput {
 }
 
 export interface ChallengeComponent {
-  challengeType: string | string[] | undefined;
+  challengeType: string 
 }
 
 export interface GameOverComponent {
@@ -46,7 +46,7 @@ export interface GameOverComponent {
 
 export interface UpdateData {
   finalScore: number;
-  operation: string | string[] | undefined;
+  operation: string 
   token: string;
 }
 

@@ -47,15 +47,13 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
   const [lostBy, setLostBy] = useState("");
   const [score, setScore] = useState(0);
 
-  const finalScore = score;
-  const operation = challengeType;
+  const finalScore = Number(score);
+  const operation = useRef(challengeType);
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     generateNewChallenge();
   }, []);
 
-  
   useEffect(() => {
     let intervalId: any;
     if (timeRemaining > 0 && player.lives > 0) {
@@ -63,10 +61,11 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
         setTimeRemaining((prevTime) => prevTime - 1);
       }, 1000);
     } else if (timeRemaining === 0) {
+      updateStats(operation.current, finalScore);
       dispatch(gameOver());
       setLostBy("time");
     } else if (player.lives === 0) {
-      updateStats();
+      updateStats(operation.current, finalScore);
       dispatch(gameOver());
       setLostBy("lives");
     }

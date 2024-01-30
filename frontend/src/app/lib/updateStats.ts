@@ -1,14 +1,12 @@
-const updateStats = async () => {
+const updateStats = async (operation: string, finalScore: number) => {
   try {
+    const body = JSON.stringify({ operation, finalScore });
     const response = await fetch("/api/updateStats", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      // Include any necessary data in the body
-      body: JSON.stringify({
-        // Your stats data here
-      }),
+      body,
     });
 
     if (!response.ok) {
@@ -21,4 +19,4 @@ const updateStats = async () => {
     console.error("Error updating stats:", error);
   }
 };
-export default updateStats
+export default updateStats;

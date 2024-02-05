@@ -7,6 +7,8 @@ import StyledComponentsRegistry from "./registry";
 import Header from "@/components/shared/Header/Header";
 import { useAppDispatch } from "@/hooks/rtkHooks";
 import { AuthProvider } from "./AuthProvider";
+/* import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+ */
 
 
 const GlobalComponent = ({ children }: any) => {

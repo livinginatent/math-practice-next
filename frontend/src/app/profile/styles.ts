@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledProfileWrapper = styled.main`
 display: flex;
 width: 100%;
-border-radius: 5px;
+flex: 1;
 `
 
 export const StyledProfileSideBar = styled.section`

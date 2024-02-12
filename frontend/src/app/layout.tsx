@@ -1,4 +1,3 @@
-
 import "../styles/globalStyles.css";
 import { rubik } from "../app/fonts/fonts";
 import GlobalComponent from "./globalComponent";

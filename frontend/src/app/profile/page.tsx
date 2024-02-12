@@ -1,16 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { StyledCollapseBtn, StyledProfileWrapper } from "./styles";
-import { SideBar } from "@/components/Sidebar/Sidebar";
+import SideBar from "../../components/Sidebar/Sidebar";
 
 type Props = {};
 
 const MyProfile = (props: Props) => {
-  return (
-    <StyledProfileWrapper>
-      <SideBar/>
-    </StyledProfileWrapper>
-  );
+  return <SideBar/>
 };
 
 export default MyProfile;

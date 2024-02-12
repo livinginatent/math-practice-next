@@ -1,11 +1,7 @@
-"use client";
 import React from "react";
-import { GridContainer, GridItem } from "./styles";
 import { useRouter } from "next/navigation";
 
-type Props = {};
-
-const ChallengesGrid = (props: Props) => {
+const ChallengesGrid = () => {
   const router = useRouter();
   const URL = "challenges/";
   const items = [
@@ -15,20 +11,43 @@ const ChallengesGrid = (props: Props) => {
     "division",
     "modulus",
   ];
-  const handleClick = (destination: any) => {
+
+  const handleClick = (destination: string) => {
     router.push(destination);
   };
+
+  // Custom style mappings for background colors
+  const bgColorClasses = [
+    "bg-[#91b89e]",
+    "bg-[#91a0b8]",
+    "bg-[#ebe4de]",
+    "bg-[#ecd768]",
+    "bg-[#ffb885]",
+    "bg-[#b89191]",
+  ];
+
   return (
-    <GridContainer>
-      {items.map((item) => {
-        return (
-          <GridItem key={item} onClick={() => handleClick(`${URL}${item}`)}>
-            {item.charAt(0).toLocaleUpperCase() + item.slice(1)}
-          </GridItem>
-        );
-      })}
-      <GridItem onClick={() => handleClick(`${URL}order-of-operations`)}>Order Of Operations</GridItem>
-    </GridContainer>
+    <div className="grid grid-cols-2 grid-rows-3 gap-2 w-2/5 mt-[30px] ml-2">
+      {items.map((item, index) => (
+        <div
+          key={item}
+          className={`flex items-center justify-center font-semibold cursor-pointer h-44 transition-all duration-300 relative ${
+            bgColorClasses[index % bgColorClasses.length]
+          } hover:border-transparent hover:bg-opacity-50`}
+          onClick={() => handleClick(`${URL}${item}`)}
+        >
+          {item.charAt(0).toUpperCase() + item.slice(1)}
+          <div className="absolute  transition-all duration-300 hover:border-transparent"></div>
+        </div>
+      ))}
+      <div
+        className={`flex items-center justify-center font-semibold cursor-pointer h-44 transition-all duration-300 relative bg-[#b89191] hover:border-transparent hover:bg-opacity-50`}
+        onClick={() => handleClick(`${URL}order-of-operations`)}
+      >
+        Order Of Operations
+        <div className="absolute  transition-all duration-300 hover:border-transparent"></div>
+      </div>
+    </div>
   );
 };
 

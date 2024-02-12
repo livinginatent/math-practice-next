@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import DropDown from "../Dropdown/Dropdown";
-const Header = () => {
+export const Header = () => {
   const router = useRouter()
   const handleLogOut = () => {
     signOut({ callbackUrl: "http://localhost:3000/login" });
@@ -29,4 +29,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+

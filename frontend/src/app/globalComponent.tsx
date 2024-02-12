@@ -4,12 +4,11 @@ import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { resetGame } from "./lib/features/user/userSlice";
 import StyledComponentsRegistry from "./registry";
-import Header from "@/components/shared/Header/Header";
-import { useAppDispatch } from "@/hooks/rtkHooks";
 import { AuthProvider } from "./AuthProvider";
-/* import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
- */
-
+import { useAppDispatch } from "../hooks/rtkHooks";
+import { Header } from "../components/shared/Header/Header";
+import "../../src/styles/globalStyles.css";
+import SideBar from "../components/Sidebar/Sidebar";
 
 const GlobalComponent = ({ children }: any) => {
   const path = usePathname();

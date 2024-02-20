@@ -4,7 +4,6 @@ import {
   StyledAnswer,
   StyledButton,
   StyledChallenge,
- 
   StyledWrongAnswer,
 } from "./styles";
 import { useChallenges } from "@/hooks/useChallenges";
@@ -134,26 +133,24 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
         </>
       ) : (
         <main className="bg-[#fff6f6] rounded text-4xl text-center items-center flex flex-col absolute top-50 left-50 w-2/4 h-2/4">
-          <section className="flex h-auto justify-around items-center w-full">
-            <p className="flex flex-row">
-              Score: {score} <ClockIcon /> {timeRemaining}{" "}
-            </p>
-
-            <p className="flex flex-row">
+          <section className="flex justify-around items-center w-full h-auto">
+            <span className="flex items-center gap-[5px]">Score: {score}</span>
+            <span className="flex items-center gap-[5px]">
+              {" "}
+              <ClockIcon /> {timeRemaining}{" "}
+            </span>
+            <span className="flex items-center gap-[5px]">
               <HeartIcon /> {player.lives}
-            </p>
+            </span>
           </section>
-          <div className="flex justify-center align-center h-2/5 mt-[3rem]" >
+          <div className="flex justify-center align-center mt-[5rem] h-2/5">
             {challenge ? challenge : ""}
             <input
               className="rounded border-solid border border-[#b6bbc4] w-[15%] h-[30%] text-xl ml-2"
               value={userInput}
               onChange={handleInputChange}
             />
-            <Button
-              className="w-[15%] h-[30%] ml-2 "
-              onClick={handleSubmit}
-            >
+            <Button className="w-[15%] h-[30%] ml-2 " onClick={handleSubmit}>
               Answer
             </Button>
           </div>

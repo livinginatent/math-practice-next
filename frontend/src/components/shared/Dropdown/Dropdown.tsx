@@ -1,17 +1,21 @@
-import Dropdown from "react-bootstrap/Dropdown";
 
+import { Button, Dropdown } from '@rewind-ui/core';
+import { useRouter } from 'next/navigation';
 function DropDown({userName}: any) {
+  const router = useRouter()
   return (
-    <Dropdown style={{ marginLeft: "20px" }}>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Welcome {userName}
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Dashboard</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Settings</Dropdown.Item>
-      </Dropdown.Menu>
+    <Dropdown className='ml-2' color="slate" itemColor="dark">
+      <Dropdown.Trigger>
+        <Button>Welcome {userName}!</Button>
+      </Dropdown.Trigger>
+      <Dropdown.Content className='w-[10rem]'>
+        <Dropdown.Item onClick={()=>router.push('/profile')}>My Profile</Dropdown.Item>
+        <Dropdown.Divider />
+        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item>Messages</Dropdown.Item>
+        <Dropdown.Divider />
+        <Dropdown.Item>Logout</Dropdown.Item>
+      </Dropdown.Content>
     </Dropdown>
   );
 }

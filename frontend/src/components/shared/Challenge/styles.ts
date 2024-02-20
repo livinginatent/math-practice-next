@@ -1,20 +1,8 @@
 import styled from "styled-components";
 
-export const StyledChallengeWrapper = styled.main`
-  background-color: #fff6f6;
-  border-radius: 10px;
-  font-size: 36px;
-  text-align: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
-`;
+
+
+
 
 export const StyledChallenge = styled.div`
   display: flex;
@@ -62,12 +50,4 @@ export const StyledUserGameStats = styled.section`
   
 `;
 
-export const StyledUserScore = styled.p`
-  
-`;
-export const StyledUserTime = styled.p`
-  
-`;
-export const StyledUserLives = styled.p`
-  
-`;
+

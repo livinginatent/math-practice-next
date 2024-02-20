@@ -4,11 +4,7 @@ import {
   StyledAnswer,
   StyledButton,
   StyledChallenge,
-  StyledChallengeWrapper,
-  StyledUserGameStats,
-  StyledUserLives,
-  StyledUserScore,
-  StyledUserTime,
+ 
   StyledWrongAnswer,
 } from "./styles";
 import { useChallenges } from "@/hooks/useChallenges";
@@ -23,6 +19,7 @@ import {
 import GameOver from "@/components/gameOver/GameOver";
 import { ClockIcon, HeartIcon } from "./icons";
 import updateStats from "@/app/lib/updateStats";
+import { Button } from "@rewind-ui/core";
 
 const Challenge = ({ challengeType }: ChallengeComponent) => {
   const {
@@ -136,27 +133,36 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
           <GameOver finalScore={score} newGame={newGame} lostBy={lostBy} />
         </>
       ) : (
-        <StyledChallengeWrapper>
-          <StyledUserGameStats>
-            <StyledUserScore>Score: {score} </StyledUserScore>
-            <StyledUserTime>
-              <ClockIcon /> {timeRemaining}{" "}
-            </StyledUserTime>
-            <StyledUserLives>
-              <HeartIcon /> {player.lives}{" "}
-            </StyledUserLives>
-          </StyledUserGameStats>
-          <StyledChallenge>
+        <main className="bg-[#fff6f6] rounded text-4xl text-center items-center flex flex-col absolute top-50 left-50 w-2/4 h-2/4">
+          <section className="flex h-auto justify-around items-center w-full">
+            <p className="flex flex-row">
+              Score: {score} <ClockIcon /> {timeRemaining}{" "}
+            </p>
+
+            <p className="flex flex-row">
+              <HeartIcon /> {player.lives}
+            </p>
+          </section>
+          <div className="flex justify-center align-center h-2/5 mt-[3rem]" >
             {challenge ? challenge : ""}
-            <StyledAnswer value={userInput} onChange={handleInputChange} />
-            <StyledButton onClick={handleSubmit}>Answer</StyledButton>
-          </StyledChallenge>
+            <input
+              className="rounded border-solid border border-[#b6bbc4] w-[15%] h-[30%] text-xl ml-2"
+              value={userInput}
+              onChange={handleInputChange}
+            />
+            <Button
+              className="w-[15%] h-[30%] ml-2 "
+              onClick={handleSubmit}
+            >
+              Answer
+            </Button>
+          </div>
           {isWrong ? (
             <StyledWrongAnswer>Try Again</StyledWrongAnswer>
           ) : isEmpty ? (
             <StyledWrongAnswer>Enter a value</StyledWrongAnswer>
           ) : null}
-        </StyledChallengeWrapper>
+        </main>
       )}
     </>
   );

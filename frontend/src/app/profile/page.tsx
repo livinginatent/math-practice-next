@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { StyledCollapseBtn, StyledProfileWrapper } from "./styles";
 import SideBar from "../../components/Sidebar/Sidebar";
 
 type Props = {};

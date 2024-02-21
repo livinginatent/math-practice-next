@@ -1,11 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import {
-  StyledAnswer,
-  StyledButton,
-  StyledChallenge,
-  StyledWrongAnswer,
-} from "./styles";
 import { useChallenges } from "@/hooks/useChallenges";
 import { ChallengeComponent, UpdateData } from "@/interfaces";
 import { useAppDispatch, useAppSelector } from "@/hooks/rtkHooks";
@@ -133,7 +127,7 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
         </>
       ) : (
         <main className="bg-[#fff6f6] rounded text-4xl text-center items-center flex flex-col absolute top-50 left-50 w-2/4 h-2/4">
-          <section className="flex justify-around items-center w-full h-auto">
+          <section className="flex mt-4 justify-around items-center w-full h-auto">
             <span className="flex items-center gap-[5px]">Score: {score}</span>
             <span className="flex items-center gap-[5px]">
               {" "}
@@ -155,9 +149,9 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
             </Button>
           </div>
           {isWrong ? (
-            <StyledWrongAnswer>Try Again</StyledWrongAnswer>
+            <p className="text-lg text-red-600">Try Again</p>
           ) : isEmpty ? (
-            <StyledWrongAnswer>Enter a value</StyledWrongAnswer>
+            <p className="text-lg text-red-600">Enter a value</p>
           ) : null}
         </main>
       )}

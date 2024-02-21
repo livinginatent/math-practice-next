@@ -77,3 +77,7 @@ export interface UserModel {
     highestOrderedScore: number;
   };
 }
+
+export interface gameModes {
+  title:string
+}

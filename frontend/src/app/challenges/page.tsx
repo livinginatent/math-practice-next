@@ -1,18 +1,17 @@
 'use client'
 import React from 'react'
-import { StyledChallengeCard, StyledChallengesWrapper } from './styles'
+import { StyledChallengesWrapper } from './styles'
 import GameModes from '@/components/gameModes/gameModes'
 
-type Props = {}
 
-const ChallengesPage = (props: Props) => {
+const ChallengesPage = () => {
   return (
     <StyledChallengesWrapper>
-        <GameModes/>
-        <GameModes/>
-        <GameModes/>
+      <GameModes title='test' />
+      <GameModes title="" />
+      <GameModes title="" />
     </StyledChallengesWrapper>
-  )
+  );
 }
 
 export default ChallengesPage

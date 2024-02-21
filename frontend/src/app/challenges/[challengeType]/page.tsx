@@ -2,7 +2,6 @@
 import React from "react";
 import { StyledMainChallengeWrapper } from "./styles";
 import Challenge from "@/components/shared/Challenge/Challenge";
-type Props = {};
 
 const ChallengePage = ({ params }: any) => {
   const challengeType = params.challengeType;

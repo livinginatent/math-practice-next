@@ -81,3 +81,7 @@ export interface UserModel {
 export interface gameModes {
   title:string
 }
+
+export interface ProfileHeader {
+  isExpanded:boolean
+}

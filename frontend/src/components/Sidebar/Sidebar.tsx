@@ -20,7 +20,7 @@ const SideBar = ({ onSelect }: Props) => {
       expanded={expanded}
       onToggle={() => handleExpand}
       onMouseEnter={() => null}
-      className="relative min-w-[5rem]"
+      className="relative h-screen min-w-[4rem]"
     >
       <Sidebar.Head>
         <Sidebar.Head.Title>Math Practice</Sidebar.Head.Title>
@@ -39,12 +39,12 @@ const SideBar = ({ onSelect }: Props) => {
 
         <Sidebar.Nav.Section>
           <Sidebar.Nav.Section.Title>User</Sidebar.Nav.Section.Title>
-          <Sidebar.Nav.Section.Item icon={<FaUser />} label="Your Profile" />
           <Sidebar.Nav.Section.Item
-            onClick={() => onSelect("a")}
-            label="Settings & Privacy"
-            as="button"
-          >
+            onClick={() => onSelect("profile")}
+            icon={<FaUser />}
+            label="Your Profile"
+          />
+          <Sidebar.Nav.Section.Item label="Settings & Privacy" as="button">
             <Sidebar.Nav.Section isChild>
               <Sidebar.Nav.Section.Item
                 icon={<span className="w-1 h-1 rounded bg-transparent" />}

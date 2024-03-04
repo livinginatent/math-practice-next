@@ -31,7 +31,7 @@ const ChallengesGrid = () => {
       {items.map((item, index) => (
         <div
           key={item}
-          className={`flex items-center justify-center font-semibold cursor-pointer h-44 transition-all duration-300 relative ${
+          className={`flex items-center justify-center font-semibold cursor-pointer  transition-all duration-300 relative ${
             bgColorClasses[index % bgColorClasses.length]
           } hover:border-transparent hover:bg-opacity-50`}
           onClick={() => handleClick(`${URL}${item}`)}
@@ -41,7 +41,7 @@ const ChallengesGrid = () => {
         </div>
       ))}
       <div
-        className={`flex items-center justify-center font-semibold cursor-pointer h-44 transition-all duration-300 relative bg-[#b89191] hover:border-transparent hover:bg-opacity-50`}
+        className={`flex items-center justify-center font-semibold cursor-pointer  transition-all duration-300 relative bg-[#b89191] hover:border-transparent hover:bg-opacity-50`}
         onClick={() => handleClick(`${URL}order-of-operations`)}
       >
         Order Of Operations

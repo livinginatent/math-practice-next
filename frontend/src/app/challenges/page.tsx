@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import GameModes from '@/components/gameModes/gameModes'
+import GameModes from '@/components/GameModes/GameModes'
 
 
 const ChallengesPage = () => {

@@ -8,14 +8,17 @@ export const PATCH = async (req: any, res: any) => {
 
   try {
     const session = await getServerSession(authOptions);
-    if (!session) {
-      return new Response("User not authenticated", { status: 401 });
-    }
+     if (!session) {
+       return new Response(
+         JSON.stringify({ message: "User not authenticated" }),
+         { status: 401 }
+       );
+     }
 
     await connectMongoDB();
     const user = await User.findById(session.user.id);
     if (!user) {
-      return new Response("User not found", { status: 404 });
+      return new Response(JSON.stringify({message:"User not found"}), { status: 404 });
     }
     user.userStats.totalGamesPlayed++;
     user.userStats.totalScore += body.finalScore;
@@ -61,9 +64,10 @@ export const PATCH = async (req: any, res: any) => {
       { new: true }
     );
 
-    return new Response("Stats updated", { status: 200 });
-  } catch (error) {
+return new Response(JSON.stringify({ message: "Stats updated" }), {
+  status: 200,
+});  } catch (error) {
     console.log(error);
-    return new Response("internal server error", { status: 500 });
+    return new Response(JSON.stringify({message:"internal server error"}), { status: 500 });
   }
 };

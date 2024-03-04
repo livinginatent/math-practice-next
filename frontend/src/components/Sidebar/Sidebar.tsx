@@ -4,11 +4,12 @@ import { MdDashboard } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "@/hooks/rtkHooks";
 import { expandSidebar } from "@/app/lib/features/sidebar/sidebarSlice";
-type Props = {};
+type Props = {
+  onSelect: any;
+};
 
-const SideBar = (props: Props) => {
+const SideBar = ({ onSelect }: Props) => {
   const [expanded, setExpanded] = useState(true);
-  const isExpanded = useAppSelector((state) => state.sidebar.isExpanded);
   const dispatch = useAppDispatch();
   const handleExpand = () => {
     setExpanded((prev) => !prev);
@@ -16,7 +17,6 @@ const SideBar = (props: Props) => {
   };
   return (
     <Sidebar
-      {...props}
       expanded={expanded}
       onToggle={() => handleExpand}
       onMouseEnter={() => null}
@@ -29,22 +29,26 @@ const SideBar = (props: Props) => {
       </Sidebar.Head>
       <Sidebar.Nav>
         <Sidebar.Nav.Section>
-          <Sidebar.Nav.Section.Item className="mt-[1.2rem]" label="Dashboard" icon={<MdDashboard/>} href="#" active />
+          <Sidebar.Nav.Section.Item
+            className="mt-[1.2rem]"
+            onClick={() => onSelect("dashboard")}
+            label="Dashboard"
+            icon={<MdDashboard />}
+          />
         </Sidebar.Nav.Section>
 
         <Sidebar.Nav.Section>
           <Sidebar.Nav.Section.Title>User</Sidebar.Nav.Section.Title>
+          <Sidebar.Nav.Section.Item icon={<FaUser />} label="Your Profile" />
           <Sidebar.Nav.Section.Item
-            icon={<FaUser />}
-            label="Your Profile"
-            href="#"
-          />
-          <Sidebar.Nav.Section.Item label="Settings & Privacy" as="button">
+            onClick={() => onSelect("a")}
+            label="Settings & Privacy"
+            as="button"
+          >
             <Sidebar.Nav.Section isChild>
               <Sidebar.Nav.Section.Item
                 icon={<span className="w-1 h-1 rounded bg-transparent" />}
                 label="Settings"
-                href="#"
               />
               <Sidebar.Nav.Section.Item
                 icon={<span className="w-1 h-1 rounded bg-transparent" />}

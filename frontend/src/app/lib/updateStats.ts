@@ -1,12 +1,13 @@
 const updateStats = async (operation: string, finalScore: number) => {
   try {
-    const body = JSON.stringify({ operation, finalScore });
+    const body = { operation, finalScore }; // Directly create the object
+
     const response = await fetch("/api/updateStats", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body,
+      body: JSON.stringify(body), // Stringify only when necessary for clarity
     });
 
     if (!response.ok) {
@@ -19,4 +20,5 @@ const updateStats = async (operation: string, finalScore: number) => {
     console.error("Error updating stats:", error);
   }
 };
+
 export default updateStats;

@@ -83,5 +83,5 @@ export interface gameModes {
 }
 
 export interface ProfileHeader {
-  isExpanded:boolean
+  path:string
 }

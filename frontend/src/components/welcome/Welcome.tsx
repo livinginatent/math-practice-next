@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import ChallengesGrid from "../challengesGrid/ChallengesGrid";
+import ChallengesGrid from "../ChallengesGrid/ChallengesGrid";
 import { useRouter } from "next/navigation";
 
 const Welcome = () => {

@@ -3,7 +3,7 @@ import { Button, Card } from "@rewind-ui/core";
 import React from "react";
 import { Avatar } from "@rewind-ui/core";
 
-const ProfileHeader = ({ isExpanded }: ProfileHeader) => {
+const ProfileHeader = ({ path }: ProfileHeader) => {
   return (
     <nav className="w-full flex items-center justify-between h-16 bg-[#1e293b]">
       <Button

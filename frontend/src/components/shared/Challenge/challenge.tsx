@@ -9,7 +9,7 @@ import {
   increaseLives,
   resetGame,
 } from "@/app/lib/features/user/userSlice";
-import GameOver from "@/components/gameOver/GameOver";
+import GameOver from "@/components/GameOver/GameOver";
 import { ClockIcon, HeartIcon } from "./icons";
 import updateStats from "@/app/lib/updateStats";
 import { Button } from "@rewind-ui/core";

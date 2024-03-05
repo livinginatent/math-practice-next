@@ -8,7 +8,7 @@ const Welcome = () => {
 
   return (
     <>
-      <main className="flex w-full mb-4 px-4 justify-center h-full ">
+      <main className="flex w-full mb-4 px-4 justify-center h-screen ">
         <section className="flex flex-col w-3/5 mt-[30px] bg-[#fffbf5]">
           <div className="flex flex-col justify-center items-center h-full">
             <button onClick={()=>router.push('/challenges')} className="bg-transparent border-none mb-4 text-4xl text-[#3c22dd] cursor-pointer hover:border-b-2 hover:border-[#3c22dd] mt-[-2px]">

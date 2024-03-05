@@ -126,8 +126,8 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
           <GameOver finalScore={score} newGame={newGame} lostBy={lostBy} />
         </>
       ) : (
-        <main className="bg-[#fff6f6] rounded text-4xl text-center items-center flex flex-col absolute top-50 left-50 w-2/4 h-2/4">
-          <section className="flex mt-4 justify-around items-center w-full h-auto">
+        <main className="flex bg-[#fff6f6] rounded-lg text-4xl text-center items-center flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/3">
+          <section className="flex mt-4 justify-around items-center w-full ">
             <span className="flex items-center gap-[5px]">Score: {score}</span>
             <span className="flex items-center gap-[5px]">
               {" "}

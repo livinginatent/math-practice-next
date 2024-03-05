@@ -11,7 +11,7 @@ type Props = {};
 
 const Profile = (props: Props) => {
   return (
-    <main className="bg-[#eeeeee] pb-[7.7rem]">
+    <main className="bg-[#eeeeee] h-screen ">
       <section className="flex flex-col ml-8 gap-4 ">
         <div className="flex">
           <div className="rounded-md w-[14rem] h-[16rem] mt-4 bg-white flex flex-col justify-items-center items-center p-4">

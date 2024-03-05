@@ -38,6 +38,7 @@ const StatsChart = (props: Props) => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top" as const,
@@ -93,7 +94,7 @@ const StatsChart = (props: Props) => {
     ],
   };
   return (
-    <section className="bg-[#eeeeee] pb-[3.25rem] flex items-center justify-center ">
+    <section className="bg-[#eeeeee] h-[820px] flex items-center justify-center">
       <Bar options={options} data={data} />
     </section>
   );

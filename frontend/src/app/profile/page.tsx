@@ -9,7 +9,7 @@ const MyProfile = () => {
   const [isActive, setIsActive] = useState("");
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row h-full">
       <SideBar onSelect={(component: any) => setIsActive(component)} />
       <div className={`flex-1 transition-all duration-300`}>
         <ProfileHeader path="" />

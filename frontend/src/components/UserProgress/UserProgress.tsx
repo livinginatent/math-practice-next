@@ -6,7 +6,7 @@ type Props = {};
 const UserProgress = (props: Props) => {
   return (
      
-      <div className="flex gap-4 w-1/2 ml-8"> {/* Added flex-wrap for responsiveness */}
+      <div className="flex w-1/2 ml-8"> {/* Added flex-wrap for responsiveness */}
         <Card className=" md:w-1/2"> {/* Adjusted width */}
           <Card.Header>Player Progress</Card.Header>
           <Card.Body>
@@ -30,7 +30,7 @@ const UserProgress = (props: Props) => {
             ></Progress>
           </Card.Body>
         </Card>
-        <Card className="w-full md:w-1/2"> {/* Adjusted width */}
+        <Card className="w-full ml-8 md:w-1/2"> {/* Adjusted width */}
           <Card.Header>Skill Progress</Card.Header>
           <Card.Body>
             <p className="font-medium">Accuracy</p>

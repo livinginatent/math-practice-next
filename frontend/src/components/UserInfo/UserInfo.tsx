@@ -6,7 +6,7 @@ type Props = {};
 
 const UserInfo = (props: Props) => {
   return (
-    <div className="w-2/3 h-1/2 mt-4 ml-8">
+    <div className="w-3/4 mt-4 ml-8">
       <Card>
         <Card.Body className="h-12  flex justify-between items-center  ">
           Full Name {<p className="font-extralight">Dan Abramov</p>}

@@ -5,8 +5,8 @@ import { SlBadge } from "react-icons/sl";
 import { FaRegChartBar } from "react-icons/fa";
 import { BiMath } from "react-icons/bi";
 import UserInfo from "../UserInfo/UserInfo";
-import User from "@/app/models/userModel";
 import UserProgress from "../UserProgress/UserProgress";
+import { GoTrophy } from "react-icons/go";
 type Props = {};
 
 const Profile = (props: Props) => {
@@ -15,7 +15,12 @@ const Profile = (props: Props) => {
       <section className="flex flex-col ml-8 gap-4 ">
         <div className="flex">
           <div className="rounded-md w-[14rem] h-[16rem] mt-4 bg-white flex flex-col justify-items-center items-center p-4">
-            <Avatar color="purple" size="xl" tone="glossy" />
+            <Avatar
+              src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/032/medium/oapgW_Fp_400x400.jpg"
+              color="purple"
+              size="xl"
+              tone="glossy"
+            />
             <p className="mt-4">Dan Abramov</p>
             <p className="mt-4 font-extralight text-slate-600">Fast Learner</p>
             <p className="mt-4 font-thin text-slate-600">Baku, Azerbaijan</p>
@@ -29,7 +34,7 @@ const Profile = (props: Props) => {
         </div>
 
         <div className="flex">
-          <Card className="w-[14rem]">
+          <Card className="w-[14rem] h-50">
             <Card.Body className="flex h-10 flex-row gap-2 justify-items-center items-center p-2 font-light">
               {<SlBadge />}Total Badges: 20
             </Card.Body>
@@ -37,6 +42,9 @@ const Profile = (props: Props) => {
               {<FaRegChartBar />} Skill Level: Expert
             </Card.Body>
             <Card.Body className="flex h-10 flex-row gap-2 justify-items-center items-center p-2 font-light">
+              {<GoTrophy />} Rank: Addition
+            </Card.Body>
+            <Card.Body className="flex  flex-row gap-2 justify-items-center items-center p-2 font-light">
               {<BiMath />} Favourite Challenge: Addition
             </Card.Body>
           </Card>

@@ -6,11 +6,12 @@ import { FaRegChartBar } from "react-icons/fa";
 import { BiMath } from "react-icons/bi";
 import UserInfo from "../UserInfo/UserInfo";
 import User from "@/app/models/userModel";
+import UserProgress from "../UserProgress/UserProgress";
 type Props = {};
 
 const Profile = (props: Props) => {
   return (
-    <main className="bg-[#eeeeee]">
+    <main className="bg-[#eeeeee] pb-[7.7rem]">
       <section className="flex flex-col ml-8 gap-4 ">
         <div className="flex">
           <div className="rounded-md w-[14rem] h-[16rem] mt-4 bg-white flex flex-col justify-items-center items-center p-4">
@@ -27,7 +28,7 @@ const Profile = (props: Props) => {
           <UserInfo />
         </div>
 
-        <div>
+        <div className="flex">
           <Card className="w-[14rem]">
             <Card.Body className="flex h-10 flex-row gap-2 justify-items-center items-center p-2 font-light">
               {<SlBadge />}Total Badges: 20
@@ -39,6 +40,7 @@ const Profile = (props: Props) => {
               {<BiMath />} Favourite Challenge: Addition
             </Card.Body>
           </Card>
+          <UserProgress />
         </div>
       </section>
     </main>

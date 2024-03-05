@@ -6,7 +6,7 @@ type Props = {};
 
 const UserInfo = (props: Props) => {
   return (
-    <div className="w-1/2 h-1/2 mt-4 ml-8">
+    <div className="w-2/3 h-1/2 mt-4 ml-8">
       <Card>
         <Card.Body className="h-12  flex justify-between items-center  ">
           Full Name {<p className="font-extralight">Dan Abramov</p>}
@@ -22,7 +22,7 @@ const UserInfo = (props: Props) => {
         </Card.Body>
       </Card>
       <div className="flex flex-col items-end mt-1">
-        <Button tone="outline" className=" ">
+        <Button tone="outline" className="hover:bg-[#D8D9DA] ">
           Edit your information
         </Button>
       </div>

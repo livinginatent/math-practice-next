@@ -1,4 +1,4 @@
-import { getUserStats } from "@/app/lib/me/me";
+import { getUser } from "@/app/lib/me/me";
 import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
@@ -17,9 +17,10 @@ const StatsChart = (props: Props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const stats = await getUserStats();
-      if (stats && stats.userStats) {
-        setUserStats(stats.userStats); // Now directly setting userStats
+      const user = await getUser();
+      
+      if (user && user.userStats) {
+        setUserStats(user.userStats); // Now directly setting userStats
       } else {
         console.error("Failed to load user stats");
       }

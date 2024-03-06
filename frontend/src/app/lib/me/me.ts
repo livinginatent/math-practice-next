@@ -1,4 +1,4 @@
-export const getUserStats = async () => {
+export const getUser = async () => {
   try {
     const response = await fetch("/api/me", {
       method: "GET",

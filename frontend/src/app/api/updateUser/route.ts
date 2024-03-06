@@ -3,7 +3,10 @@ import { authOptions } from "../auth/[...nextauth]/route";
 import { connectMongoDB } from "@/app/lib/db/mongodb";
 import User from "@/app/models/userModel";
 
-export const GET = async (req: any, res: any) => {
+export const PATCH = async (req: any, res: any) => {
+  const body = await req.json();
+  const { username, email } = body;
+
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
@@ -15,19 +18,28 @@ export const GET = async (req: any, res: any) => {
 
     await connectMongoDB();
     const user = await User.findById(session.user.id);
-
     if (!user) {
       return new Response(JSON.stringify({ message: "User not found" }), {
         status: 404,
       });
     }
 
-    // Return only the userStats instead of the entire user object
-    return new Response(JSON.stringify(user), {
-      status: 200,
-    });
+    await User.findByIdAndUpdate(
+      { _id: user.id },
+      { $set: { name: username, email: email } },
+      { new: true }
+    );
+
+    return new Response(
+      JSON.stringify({ message: "User updated successfully" }),
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
-    console.error(error);
-    return new Response("Internal server error", { status: 500 });
+    console.log(error);
+    return new Response(JSON.stringify({ message: "internal server error" }), {
+      status: 500,
+    });
   }
 };

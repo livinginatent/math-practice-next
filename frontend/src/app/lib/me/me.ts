@@ -8,11 +8,10 @@ export const getUser = async () => {
       throw new Error("Failed to fetch user stats");
     }
 
-    const stats = await response.json();
-    return stats;
+    const user = await response.json();
+    return user;
   } catch (error) {
-    console.error("Error fetching user stats:", error);
-    // Consider returning an error object or null to indicate failure
-    // and handle it in your component or caller.
+    console.error("Error fetching user user:", error);
+    
   }
 };

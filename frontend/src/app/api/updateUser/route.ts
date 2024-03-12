@@ -26,12 +26,12 @@ export const PATCH = async (req: any, res: any) => {
 
     await User.findByIdAndUpdate(
       { _id: user.id },
-      { $set: { name: username, email: email } },
+      { $set: { username: username, email: email } },
       { new: true }
     );
 
     return new Response(
-      JSON.stringify({ message: "User updated successfully" }),
+      JSON.stringify({ message: "User updated successfully",user:user }),
       {
         status: 200,
       }

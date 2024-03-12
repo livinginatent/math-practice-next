@@ -1,9 +1,19 @@
-import { Avatar, Button } from '@rewind-ui/core';
-import React from 'react'
+import { useGetUserQuery } from "@/services/userApi";
+import { Avatar, Button } from "@rewind-ui/core";
+import { useSession } from "next-auth/react";
+import React, { useEffect, useState } from "react";
 
-type Props = {}
+type Props = {};
 
 const UserCard = (props: Props) => {
+  const { data: session, status } = useSession();
+  const { data: userData } = useGetUserQuery("api/me");
+  const [userName, setUsername] = useState("");
+  useEffect(() => {
+    if (userData) {
+      setUsername(userData.username);
+    }
+  },[userData]);
   return (
     <div className="rounded-md w-[14rem] h-[20rem] mt-4 bg-white flex flex-col justify-items-center items-center p-4">
       <Avatar
@@ -12,7 +22,7 @@ const UserCard = (props: Props) => {
         size="xl"
         tone="glossy"
       />
-      <p className="mt-4 h-10">Dan Abramov</p>
+      <p className="mt-4 h-10">{userName}</p>
       <p className="mt-4 h-10 font-extralight text-slate-600">Fast Learner</p>
       <p className="mt-4 h-10 font-thin text-slate-600">Premium User</p>
       <div className="flex mt-4">
@@ -22,6 +32,6 @@ const UserCard = (props: Props) => {
       </div>
     </div>
   );
-}
+};
 
-export default UserCard
+export default UserCard;

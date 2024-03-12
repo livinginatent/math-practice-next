@@ -8,7 +8,7 @@ import {
   gameOver,
   increaseLives,
   resetGame,
-} from "@/app/lib/features/user/userSlice";
+} from "@/app/lib/features/game/gameSlice";
 import GameOver from "@/components/GameOver/GameOver";
 import { ClockIcon, HeartIcon } from "./icons";
 import updateStats from "@/app/lib/updateStats";
@@ -28,8 +28,8 @@ const Challenge = ({ challengeType }: ChallengeComponent) => {
   const [userInput, setUserInput] = useState("");
   const [isWrong, setIsWrong] = useState(false);
 
-  const player = useAppSelector((state) => state.user);
-  const isFinished = useAppSelector((state) => state.user.gameOver);
+  const player = useAppSelector((state) => state.game);
+  const isFinished = useAppSelector((state) => state.game.gameOver);
   const time = useRef(player.time);
   const [timeRemaining, setTimeRemaining] = useState(player.time);
   const [isEmpty, setIsEmpty] = useState(false);

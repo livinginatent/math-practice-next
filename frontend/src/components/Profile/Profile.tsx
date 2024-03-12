@@ -8,6 +8,7 @@ import UserAchievements from "./UserAchievements/UserAchievements";
 type Props = {};
 
 const Profile = (props: Props) => {
+  
   return (
     <main className="bg-[#eeeeee] h-screen ">
       <section className="flex flex-col ml-8 gap-4 ">

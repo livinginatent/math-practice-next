@@ -2,6 +2,7 @@
 import { getUser } from "@/app/lib/me/me";
 import updateUser from "@/app/lib/updateUser";
 import User from "@/app/models/userModel";
+import { useGetUserQuery } from "@/services/userApi";
 import { Button, Card, Input } from "@rewind-ui/core";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
@@ -9,8 +10,10 @@ import React, { useEffect, useState } from "react";
 type Props = {};
 
 const UserInfo = (props: Props) => {
+  const { data: session, status } = useSession(); // Use status to handle loading state
+  const [username, setUsername] = useState("");
 
-  const [isEditing, setIsEditing] = useState(false);
+  const { data: userData } = useGetUserQuery("api/me");
   const [userInfo, setUserInfo] = useState({
     Name: "",
     Email: "",
@@ -18,31 +21,27 @@ const UserInfo = (props: Props) => {
     Address: "Baku, Azerbaijan",
   });
 
-  const fetchData = async () => {
-    const user = await getUser();
-
-    if (user && user.userStats) {
+  useEffect(() => {
+    if (userData) {
       setUserInfo((prev) => ({
         ...prev,
-        Name: user?.username || prev.Name,
-        Email: user?.email || prev.Email,
+        Name: userData.username || "",
+        Email: userData.email || "",
       }));
-    } else {
-      console.error("Failed to load user stats");
     }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
+  }, [userData]);
+
+  const [isEditing, setIsEditing] = useState(false);
+
   const handleSave = async () => {
     const { Email, Name } = userInfo;
     if (Email && Name) {
-      // Simple validation check
+      // Assuming updateUser is correctly implemented to handle the update
       await updateUser(Name, Email);
     } else {
       console.error("Invalid Email or Name");
     }
-    setIsEditing(false); // Move setIsEditing here to ensure it only toggles after an attempt to update
+    setIsEditing(false);
   };
   const handleChange = (e: any) => {
     const { name, value } = e.target;

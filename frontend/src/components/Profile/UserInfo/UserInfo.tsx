@@ -2,7 +2,7 @@
 import { getUser } from "@/app/lib/me/me";
 import updateUser from "@/app/lib/updateUser";
 import User from "@/app/models/userModel";
-import { useGetUserQuery } from "@/services/userApi";
+import { useGetUserQuery, useUpdateUserMutation } from "@/services/userApi";
 import { Button, Card, Input } from "@rewind-ui/core";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
@@ -10,9 +10,7 @@ import React, { useEffect, useState } from "react";
 type Props = {};
 
 const UserInfo = (props: Props) => {
-  const { data: session, status } = useSession(); // Use status to handle loading state
-  const [username, setUsername] = useState("");
-
+  const [updateUser] = useUpdateUserMutation(); // Use the mutation hook
   const { data: userData } = useGetUserQuery("api/me");
   const [userInfo, setUserInfo] = useState({
     Name: "",
@@ -33,16 +31,18 @@ const UserInfo = (props: Props) => {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleSave = async () => {
+const handleSave = async () => {
     const { Email, Name } = userInfo;
     if (Email && Name) {
-      // Assuming updateUser is correctly implemented to handle the update
-      await updateUser(Name, Email);
+      // Use the updateUser mutation here
+      await updateUser({ email: Email, username: Name }).unwrap();
+      // No need to manually refetch; invalidation will trigger a refetch
     } else {
       console.error("Invalid Email or Name");
     }
     setIsEditing(false);
   };
+
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setUserInfo((prevUserInfo) => ({

@@ -1,9 +1,16 @@
 import { ProfileHeader } from "@/interfaces";
 import { Button, Card } from "@rewind-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar } from "@rewind-ui/core";
+import { useGetUserQuery } from "@/services/userApi";
 
 const ProfileHeader = ({ path }: ProfileHeader) => {
+    const { data: userData } = useGetUserQuery("api/me");
+    const [userName,setUserName] = useState('')
+    useEffect(()=>{
+      if(userData)setUserName(userData.username)
+    },[userData])
+
   return (
     <nav className="w-full flex items-center justify-between h-10 bg-[#1e293b]">
       <Button
@@ -33,7 +40,7 @@ const ProfileHeader = ({ path }: ProfileHeader) => {
             size="xs"
           />
           <div className="flex flex-col">
-            <div className="font-small text-white text-base">Dan Abramov</div>
+            <div className="font-small text-white text-base">{userName}</div>
             <div className="text-gray-400 text-xs">Rank: 1</div>
           </div>
         </Card.Body>

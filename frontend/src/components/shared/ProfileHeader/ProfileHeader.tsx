@@ -3,13 +3,14 @@ import { Button, Card } from "@rewind-ui/core";
 import React, { useEffect, useState } from "react";
 import { Avatar } from "@rewind-ui/core";
 import { useGetUserQuery } from "@/services/userApi";
+import { useAppSelector } from "@/hooks/rtkHooks";
 
 const ProfileHeader = ({ path }: ProfileHeader) => {
-    const { data: userData } = useGetUserQuery("api/me");
+   const user = useAppSelector((state) => state.user);
     const [userName,setUserName] = useState('')
     useEffect(()=>{
-      if(userData)setUserName(userData.username)
-    },[userData])
+      if(user)setUserName(user.userInfo?.username)
+    },[user])
 
   return (
     <nav className="w-full flex items-center justify-between h-10 bg-[#1e293b]">

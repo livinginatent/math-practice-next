@@ -1,4 +1,4 @@
-import { useGetUserQuery } from "@/services/userApi";
+import { useAppSelector } from "@/hooks/rtkHooks";
 import { Avatar, Button } from "@rewind-ui/core";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
@@ -6,14 +6,14 @@ import React, { useEffect, useState } from "react";
 type Props = {};
 
 const UserCard = (props: Props) => {
-  const { data: session, status } = useSession();
-  const { data: userData } = useGetUserQuery("api/me");
+  const user = useAppSelector((state) => state.user);
+
   const [userName, setUsername] = useState("");
   useEffect(() => {
-    if (userData) {
-      setUsername(userData.username);
+    if (user) {
+      setUsername(user.userInfo?.username);
     }
-  },[userData]);
+  },[user]);
   return (
     <div className="rounded-md w-[14rem] h-[20rem] mt-4 bg-white flex flex-col justify-items-center items-center p-4">
       <Avatar

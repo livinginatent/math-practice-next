@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { HYDRATE } from "next-redux-wrapper";
 import type { Action, PayloadAction } from "@reduxjs/toolkit";
 
-type RootState = any; // normally inferred from state
+type RootState = any; 
 function isHydrateAction(action: Action): action is PayloadAction<RootState> {
   return action.type === HYDRATE;
 }

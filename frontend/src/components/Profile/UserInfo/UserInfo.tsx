@@ -1,17 +1,16 @@
 "use client";
-import { getUser } from "@/app/lib/me/me";
-import updateUser from "@/app/lib/updateUser";
-import User from "@/app/models/userModel";
-import { useGetUserQuery, useUpdateUserMutation } from "@/services/userApi";
+
+import { useAppSelector } from "@/hooks/rtkHooks";
+import {  useUpdateUserMutation } from "@/services/userApi";
 import { Button, Card, Input } from "@rewind-ui/core";
-import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 
 type Props = {};
 
 const UserInfo = (props: Props) => {
   const [updateUser] = useUpdateUserMutation(); // Use the mutation hook
-  const { data: userData } = useGetUserQuery("api/me");
+  const user = useAppSelector((state) => state.user);
+
   const [userInfo, setUserInfo] = useState({
     Name: "",
     Email: "",
@@ -20,18 +19,18 @@ const UserInfo = (props: Props) => {
   });
 
   useEffect(() => {
-    if (userData) {
+    if (user) {
       setUserInfo((prev) => ({
         ...prev,
-        Name: userData.username || "",
-        Email: userData.email || "",
+        Name: user.userInfo?.username || "",
+        Email: user.userInfo?.email || "",
       }));
     }
-  }, [userData]);
+  }, [user]);
 
   const [isEditing, setIsEditing] = useState(false);
 
-const handleSave = async () => {
+  const handleSave = async () => {
     const { Email, Name } = userInfo;
     if (Email && Name) {
       // Use the updateUser mutation here

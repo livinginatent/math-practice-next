@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation"; // Corrected from 'next/navigation' to 'next/router'
+import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import DropDown from "../Dropdown/Dropdown";
-import { useGetUserQuery } from "@/services/userApi";
+import { useAppSelector } from "@/hooks/rtkHooks";
 
-export const Header = () => {
+export const Header = ({ userName }: any) => {
   const router = useRouter();
-  const { data: session, status } = useSession();
-  const { data: userData } = useGetUserQuery("api/me");
-  const [userName, setUserName] = useState("");
-  useEffect(() => {
-    if (userData) setUserName(userData.username);
-  }, [userData]);
+  const { data: session } = useSession();
+
+  const user = useAppSelector((state) => state.user);
 
   const handleLogOut = () => {
     signOut({ callbackUrl: "http://localhost:3000/login" });
@@ -19,8 +16,8 @@ export const Header = () => {
 
   return (
     <div className="flex items-center justify-between bg-[#fffbf5] rounded-md w-full">
-      {session && userName ? (
-        <DropDown userName={userName} />
+      {session ? (
+        <DropDown userName={userName ? userName : " test"} />
       ) : (
         <div
           className="m-4 no-underline text-[#333] font-bold cursor-pointer hover:text-black"
